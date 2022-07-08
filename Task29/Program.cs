@@ -21,7 +21,7 @@ int[] FillArrayFunction(int size)
 
     for(int i = 0; i < fillArray.Length; i++)
     {
-        fillArray[i] = random.Next(-101, 101);
+        fillArray[i] = random.Next(-100, 101);
     }
     return fillArray;
 }
@@ -37,9 +37,31 @@ void PrintArray(int[] array)
 }
 
 void SortArray(int[] array)
-{
+/*{
     Array.Sort(array, (x, y) => Math.Abs(x).CompareTo(Math.Abs(y)));
     Console.WriteLine(string.Join(" ", array));
+}
+*/
+
+{
+    for(int i = array.Length - 1; i > 0; i--)
+    {
+        for(int j = 0; j < i; j++)
+        {
+            if(Math.Abs(array[j]) > Math.Abs(array[j + 1]))
+            {
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+    Console.WriteLine("Вывод массива: ");
+    for(int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
 }
 
 
